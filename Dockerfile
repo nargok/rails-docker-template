@@ -1,5 +1,5 @@
 # Docker公式のRubyイメージを使う
-FROM ruby:2.6.1-streach
+FROM ruby:2.6.1-stretch
 
 # アプリケーションを配置するディレクトリ
 WORKDIR /app
@@ -19,4 +19,4 @@ COPY . ./
 
 # サービスを実行するコマンドとポートを設定する
 CMD ["rails", "server", "-b", "0.0.0.0"]
-EXPOST 3000
+EXPOSE 3000

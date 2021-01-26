@@ -5,11 +5,11 @@ services:
   app:
     build: .
 
-  # プロセスが正しく後始末されるようにする
-  init: true
+    # プロセスが正しく後始末されるようにする
+    init: true
 
-  ports:
-    - "3000:3000"
+    ports:
+      - "3000:3000"
 
-  volumes:
-    - .:/app
+    volumes:
+      - .:/app
