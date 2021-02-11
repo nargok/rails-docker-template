@@ -3,6 +3,8 @@ version: "3.7"
 services:
   # Railsアプリケーション
   app:
+    stdin_open: true
+    tty: true
     build: .
 
     # プロセスが正しく後始末されるようにする
