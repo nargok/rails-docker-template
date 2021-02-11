@@ -24,8 +24,8 @@ RUN bundle config --local disable_platform_warnings true \
   && bundle install ${BUNDLE_INSTALL_ARGS}
 
 # エントリーポイントを設定する
-COPY docker-entrypoint.sh /
-RUN chmod +x /docker-entrypoint.sh
+COPY docker-entrypoint*.sh /
+RUN chmod +x /docker-entrypoint*.sh
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
 # アプリケーションのファイルをコピーする

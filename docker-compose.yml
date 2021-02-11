@@ -9,11 +9,36 @@ services:
 
     # プロセスが正しく後始末されるようにする
     init: true
-
     ports:
       - "3000:3000"
-
     volumes:
+      - .:/app
       # node_modulesはイメージの中にあるものを使う
       - /app/node_modules
+    environment:
+      # appコンテナではSpringを無効にする
+      - DISABLE_SPRING=1
+
+  spring:
+    build: .
+
+    command: spring server
+    entrypoint: /docker-entrypoint-spring.sh
+
+    # プロセスが正しく後始末されるようにする
+    init: true
+
+    pid: host
+
+    environment:
+      - SPRING_SOCKET=/tmp/spring/spring.sock
+
+    volumes:
       - .:/app
+      # node_modulesはイメージの中にあるものを使う
+      - /app/node_modules
+      - spring-tmp:/tmp/spring
+
+volumes:
+  # Springの一時ファイルを共有するボリューム
+  spring-tmp:
