@@ -12,4 +12,6 @@ services:
       - "3000:3000"
 
     volumes:
+      # node_modulesはイメージの中にあるものを使う
+      - /app/node_modules
       - .:/app
